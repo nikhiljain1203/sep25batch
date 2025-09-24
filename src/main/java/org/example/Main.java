@@ -36,7 +36,7 @@ public class Main {
         //student.age = 32;
         //student.batch = "AUG 24";
 
-        Student student1 = new Student("Sudarshan", 28, "AUG 24");
+        //Student student1 = new Student("Sudarshan", 28, "AUG 24");
         System.out.println("Student Created");
 
     }

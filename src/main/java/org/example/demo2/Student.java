@@ -1,10 +1,9 @@
-package org.example.demo;
+package org.example.demo2;
 
 public class Student {
-    public String name;
-    public int age;
+    private String name;
+    int age;
     public String batch;
-    public Exam exam;
 
     public Student() {
         this.name = "Unknown";
@@ -13,26 +12,26 @@ public class Student {
         System.out.println("Student object created.");
     }
 
-    public Student(String name, int age, String batch, Exam exam) {
+    public Student(String name, int age, String batch) {
         this.name = name;
         this.age = age;
         this.batch = batch;
-        this.exam = exam;
         System.out.println("Student object created.");
     }
 
-    public Student (Student other) {
-        this.name = other.name;
-        this.age = other.age;
-        this.batch = other.batch;
-        //this.exam = other.exam; // shallow copy
-        this.exam = new Exam(other.exam);
+    void registerForClass(String className) {
+        System.out.println(name + " has registered for " + className + " class.");
     }
 
-    void registerForClass(String className) {
-        this.name = "test";
-        this.age = 10;
-        this.batch = "AUG 24";
-        System.out.println(name + " has registered for " + className + " class.");
+    void rateClass(int rating) {
+        System.out.println(name + " rated the class with " + rating + " stars.");
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

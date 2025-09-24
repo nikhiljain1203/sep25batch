@@ -23,7 +23,7 @@ public class BankAccount {
     }
 
     public String getOwnerName() {
-        return ownerName;
+        return this.ownerName;
     }
 
     public void deposit(double amount) {
