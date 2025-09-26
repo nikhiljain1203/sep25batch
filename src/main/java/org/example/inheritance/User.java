@@ -1,7 +1,7 @@
 package org.example.inheritance;
 
 public class User {
-    private String username;
+    public String username;
     public int id;
 
     public User(String username, int id) {
@@ -16,9 +16,13 @@ public class User {
         System.out.println("User object created.");
     }
 
-//    public User() {
-//        this.username = "DefaultUser";
-//        this.id = 0;
-//        System.out.println("User object created.");
-//    }
+    public User() {
+        this.username = "DefaultUser";
+        this.id = 0;
+        System.out.println("User object created.");
+    }
+
+    public void login() {
+        System.out.println(this.username + " logged in. USER");
+    }
 }
