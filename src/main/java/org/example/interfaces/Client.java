@@ -6,6 +6,6 @@ public class Client {
         dog.run();
 
         Snake snake = new Snake();
-        snake.run();
+        //snake.run();
     }
 }

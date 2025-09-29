@@ -1,6 +1,6 @@
 package org.example.interfaces;
 
-public class Dog extends Animal implements Runner, Swimmer{
+public class Dog extends Animal implements Swimmer{
     public String breed;
 
     public void makeSound() {
@@ -12,7 +12,6 @@ public class Dog extends Animal implements Runner, Swimmer{
 
     }
 
-    @Override
     public void run() {
         System.out.println("Dog is running");
     }

@@ -1,5 +1,5 @@
 package org.example.interfaces;
 
-public interface Runner {
-    void run();
+public abstract class Runner {
+    abstract void run();
 }
