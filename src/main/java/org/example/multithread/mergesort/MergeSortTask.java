@@ -52,6 +52,12 @@ public class MergeSortTask implements Callable<int[]> {
                 mergedArray[k++] = rightSorted[j++];
             }
         }
+        while(i < leftSorted.length) {
+            mergedArray[k++] = leftSorted[i++];
+        }
+        while(j < rightSorted.length) {
+            mergedArray[k++] = rightSorted[j++];
+        }
         return mergedArray;
     }
 }
