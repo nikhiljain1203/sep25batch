@@ -35,6 +35,8 @@ public class MergeSortTask implements Callable<int[]> {
         Future<int[]> leftFuture = executorService.submit(leftTask);
         Future<int[]> rightFuture = executorService.submit(rightTask);
 
+        // ----------------------
+
         int[] leftSorted = leftFuture.get();
         int[] rightSorted = rightFuture.get();
         
