@@ -21,7 +21,7 @@ public class Client {
         genericPair.setFirst("Hello");
         genericPair.setSecond(123);
 
-        genericPair.setFirst(1.00);
+        //genericPair.setFirst(1.00);
 
         List<Animal> animals = new ArrayList<>();
         animals.add(new Animal());
