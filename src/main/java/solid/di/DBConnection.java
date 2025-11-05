@@ -1,4 +1,6 @@
 package solid.di;
 
-public class DBConnection {
+public interface DBConnection {
+    void connection();
+    void close();
 }
