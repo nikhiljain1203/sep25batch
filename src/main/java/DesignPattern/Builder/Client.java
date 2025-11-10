@@ -8,8 +8,7 @@ public class Client {
 //        studentBuilder.setMajor("Computer Science");
 //        Student student = studentBuilder.build();
 
-        Student student = Student.builder()
-                .setName("Jane Smith")
+        Student student = Student.builder().setName("Jane Smith")
                 .setAge(22)
                 .setMajor("Mathematics")
                 .build();

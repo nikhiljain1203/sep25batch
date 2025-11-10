@@ -36,6 +36,6 @@ public class StudentBuilder {
         if(this.age < 18) {
             throw new IllegalArgumentException("Age must be at least 18");
         }
-        return new Student(this);
+        return new Student();
     }
 }

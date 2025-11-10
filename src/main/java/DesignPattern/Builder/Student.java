@@ -29,6 +29,10 @@ public class Student {
         this.major = major;
     }
 
+    public Student() {
+
+    }
+
     public Student(StudentBuilder studentBuilder) {
         this.name = studentBuilder.getName();
         this.age = studentBuilder.getAge();
