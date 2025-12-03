@@ -1,6 +1,7 @@
 package CaseStudy.tictactoe.models;
 
 import CaseStudy.tictactoe.exceptions.InvalidMoveException;
+import CaseStudy.tictactoe.strategies.WinningStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ public class Game {
     private int nextPlayerMoveIndex;
     private GameState gameState;
     private Player winner;
+    private List<WinningStrategy> winningStrategies;
 
     public void makeMove() throws InvalidMoveException {
         Player currentPlayer = players.get(nextPlayerMoveIndex);
@@ -31,6 +33,23 @@ public class Game {
         nextPlayerMoveIndex = (nextPlayerMoveIndex + 1) % players.size();
 
         //check winner
+        if(checkWinner(move)) {
+            gameState = GameState.ENDED;
+            winner = currentPlayer;
+            System.out.println("Game won by player: " + currentPlayer.getName());
+        } else if(moves.size() == board.getDimension() * board.getDimension()) {
+            gameState = GameState.DRAW;
+            winner = null; //draw
+            System.out.println("Game is a draw!");
+        }
+    }
+    private boolean checkWinner(Move move) {
+        for(WinningStrategy winningStrategy: winningStrategies) {
+            if(winningStrategy.checkWinner(board, move)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean validateMove(Move move) {
@@ -106,6 +125,12 @@ public class Game {
     public static class Builder {
         private int dimension;
         private List<Player> players;
+        private List<WinningStrategy> winningStrategies;
+
+        public Builder setWinningStrategies(List<WinningStrategy> winningStrategies) {
+            this.winningStrategies = winningStrategies;
+            return this;
+        }
 
         public Builder setDimension(int dimension) {
             this.dimension = dimension;
@@ -127,6 +152,7 @@ public class Game {
             game.nextPlayerMoveIndex = 0;
             game.gameState = GameState.IN_PROGRESS;
             game.moves = new ArrayList<>();
+            game.winningStrategies = winningStrategies;
             return game;
         }
     }

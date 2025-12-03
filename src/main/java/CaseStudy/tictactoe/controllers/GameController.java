@@ -3,15 +3,19 @@ package CaseStudy.tictactoe.controllers;
 import CaseStudy.tictactoe.exceptions.InvalidMoveException;
 import CaseStudy.tictactoe.models.Game;
 import CaseStudy.tictactoe.models.Player;
+import CaseStudy.tictactoe.strategies.WinningStrategy;
 
 import java.util.List;
 
 public class GameController {
     //Starts a new game
-    public Game startGame(int dimension, List<Player> players) {
+    public Game startGame(int dimension,
+                          List<Player> players,
+                          List<WinningStrategy> winningStrategies) {
         return Game.getBuilder()
                 .setDimension(dimension)
                 .setPlayers(players)
+                .setWinningStrategies(winningStrategies)
                 .build();
     }
 
