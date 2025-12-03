@@ -24,6 +24,23 @@ public class Board {
         return cells;
     }
 
+    public void printBoard() {
+        for(List<Cell> cellList : cells) {
+            for(Cell cell: cellList) {
+                if(cell.getCellState().equals(CellState.EMPTY)) {
+                    System.out.print("| |");
+                } else if (cell.getCellState().equals(CellState.BLOCKED)){
+                    System.out.print("|B|");
+                }else {
+                    System.out.print("|" +
+                            cell.getPlayer().getSymbol().getSymbol()
+                            + "|");
+                }
+            }
+            System.out.println();
+        }
+    }
+
     public int getDimension() {
         return dimension;
     }

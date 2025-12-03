@@ -1,5 +1,8 @@
 package CaseStudy.tictactoe.models;
 
+import CaseStudy.tictactoe.exceptions.InvalidMoveException;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -10,9 +13,10 @@ public class Game {
     private GameState gameState;
     private Player winner;
 
-    public void makeMove() {
+    public void makeMove() throws InvalidMoveException {
         Player currentPlayer = players.get(nextPlayerMoveIndex);
         Move move = currentPlayer.makeMove(board);
+
         if(!validateMove(move)) {
             throw new InvalidMoveException("Invalid Move made by player: " + currentPlayer.getName());
         }
@@ -21,11 +25,30 @@ public class Game {
         int col = move.getCell().getCol();
         Cell cell = board.getCells().get(row).get(col);
         cell.setCellState(CellState.OCCUPIED);
+        cell.setPlayer(currentPlayer);
 
         moves.add(new Move(cell, currentPlayer));
         nextPlayerMoveIndex = (nextPlayerMoveIndex + 1) % players.size();
 
         //check winner
+    }
+
+    private boolean validateMove(Move move) {
+        Player player= move.getPlayer();
+        Cell cell = move.getCell();
+        int row = cell.getRow();
+        int col = cell.getCol();
+        if(row < 0 || row >= board.getDimension()
+                || col < 0 || col >= board.getDimension()) {
+            return false;
+        }
+        //Add more validations like cell already occupied
+
+        return true;
+    }
+
+    public void printBoard() {
+        board.printBoard();
     }
 
     public static Builder getBuilder() {
@@ -103,6 +126,7 @@ public class Game {
             game.players = players;
             game.nextPlayerMoveIndex = 0;
             game.gameState = GameState.IN_PROGRESS;
+            game.moves = new ArrayList<>();
             return game;
         }
     }
