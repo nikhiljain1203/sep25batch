@@ -7,6 +7,8 @@ import CaseStudy.parkinglot.models.dtos.TicketResponse;
 //CRUD of Ticket
 public class TicketController {
     TicketResponse issueTicket(TicketRequest ticketRequest) {
-        return new Ticket();
+        Ticket ticket = new Ticket();
+        // Convert ticket in ticketresponse
+
     }
 }
